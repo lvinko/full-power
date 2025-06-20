@@ -3,14 +3,16 @@
   "buildCommand": "turbo run build",
   "ignoreCommand": "npx turbo-ignore --fallback=HEAD^1",
   "installCommand": "npm install",
-  "workspaces": {
-    "apps/web": {
-      "framework": "nextjs"
-    },
-    "apps/api": {
-      "framework": null,
+  "outputDirectory": "apps/web/.next",
+  "monorepo": {
+    "api": {
+      "path": "apps/api",
       "buildCommand": "turbo run build --filter=api...",
       "outputDirectory": "dist"
+    },
+    "web": {
+      "path": "apps/web",
+      "framework": "nextjs"
     }
   }
 }
