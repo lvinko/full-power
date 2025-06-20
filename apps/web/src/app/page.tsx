@@ -55,7 +55,7 @@ export default function Web() {
             ></input>
           </label>
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" variant="primary">Submit</Button>
         </form>
         {error && (
           <div>
@@ -67,7 +67,7 @@ export default function Web() {
           <div className="flex flex-col items-center justify-center">
             <h3>Greeting</h3>
             <p>{response.message}</p>
-            <Button onClick={onReset}>Reset</Button>
+            <Button onClick={onReset} variant="secondary">Reset</Button>
           </div>
         )}
       </main>
