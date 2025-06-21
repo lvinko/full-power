@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: full-power-web
+    runtime: docker
+    rootDir: apps/web
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NEXT_PUBLIC_API_HOST
+        value: ${full-power-api.host}:${full-power-api.port}
+    buildFilter:
+      paths:
+        - apps/web/**
+        - packages/**/*.tsx
+        - packages/**/*.ts
+      ignoredPaths:
+        - "**/*.test.ts"
+        - "**/*.test.tsx"
+        - "**/__tests__/**"
+
+  - type: web
+    name: full-power-api
+    runtime: docker
+    rootDir: apps/api
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 3001
+    buildFilter:
+      paths:
+        - apps/api/**
+        - packages/**/*.ts
+      ignoredPaths:
+        - "**/*.test.ts"
+        - "**/__tests__/**" 
