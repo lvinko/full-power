@@ -1,17 +1,15 @@
 {
   "$schema": "https://turborepo.com/schema.json",
-  "tasks": {
+  "pipeline": {
     "build": {
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "dependsOn": ["^build"],
       "outputs": [
         "dist/**",
         ".next/**",
         "!.next/cache/**",
         ".vercel/**",
         "public/dist/**"
-      ],
-      "dependsOn": ["^build"],
-      "env": ["NEXT_PUBLIC_API_URL"]
+      ]
     },
     "test": {
       "outputs": ["coverage/**"],
